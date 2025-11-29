@@ -1,0 +1,365 @@
+Below is the official, enterprise-grade User Guide for your platform—written as if Apple, Avid, or Adobe produced it.
+It is non-redundant, aligned exactly to your ASCII screens, workflows, systems (Framer + Outseta + Tally + Airtable + Google Drive URL mapping), and the 3-song project onboarding architecture.
+
+This guide is structured as a real product manual for first-time users.
+
+⸻
+
+USER GUIDE
+
+3-Song Project Platform
+
+Creator Onboarding & Project Management Manual
+
+(End-to-End User Experience)
+
+⸻
+
+1. Overview
+
+Welcome to the 3-Song Project Platform—a streamlined workspace designed for independent artists, producers, and writers to organize their audio, lyrics, metadata, and ownership information for three songs.
+
+This guide walks you step-by-step through the complete user experience:
+sign-up → onboarding → project setup → song workspace → export.
+
+All screens correspond directly to the UI map provided.
+
+⸻
+
+2. Getting Started
+
+2.1 Visit the Public Landing Page
+
+URL: /
+
+On this page you can:
+	•	Learn what the platform does
+	•	See the 3-step workflow
+	•	View social proof or partner logos
+	•	Begin the $1 onboarding experience
+
+Key Action:
+Select Start for $1 to begin.
+
+⸻
+
+3. Purchasing the $1 3-Song Experience
+
+3.1 Pricing Page
+
+URL: /pricing
+
+You will see:
+	•	“3-Song Project Beta” plan card
+	•	Full list of what’s included
+	•	Price: $1
+	•	FAQs and expectations
+
+Key Action:
+Click Continue – Pay $1 to enter secure checkout.
+
+⸻
+
+4. Account Creation & Payment
+
+Platform: Outseta + Stripe
+This ensures secure payment and account management.
+
+4.1 Create Your Account
+
+Enter:
+	•	Email
+	•	Password
+
+Select Next – Billing.
+
+4.2 Pay $1
+
+Enter:
+	•	Card number
+	•	Exp/CVC
+	•	Billing name
+
+Select Pay $1 and continue.
+
+4.3 Confirmation Screen
+
+A completion screen appears confirming your account.
+
+Key Action:
+Press Continue to setup to enter onboarding.
+
+⸻
+
+5. Onboarding Wizard
+
+The onboarding wizard establishes your identity, your 3-song project, and your song placeholders.
+
+There are 3 steps.
+
+⸻
+
+5.1 Step 1 — Creator Identity
+
+URL: /onboard/project-setup?step=1
+
+Enter:
+	•	Artist / Stage Name
+	•	Country or Region
+	•	Primary role (Artist, Producer, Songwriter, All)
+
+Key Action:
+Select Next – Project.
+
+⸻
+
+5.2 Step 2 — Project Basics
+
+URL: /onboard/project-setup?step=2
+
+Enter:
+	•	Project title
+	•	Primary genre
+	•	Intended use (Label pitch, Distribution, Collaboration)
+
+Key Action:
+Select Next – Tracks.
+
+⸻
+
+5.3 Step 3 — Track Naming
+
+URL: /onboard/project-setup?step=3
+
+For each of the 3 songs:
+	•	Enter a temporary or final title
+	•	Select the song type (Explicit, Clean, Instrumental)
+
+You may also choose:
+Skip, use Track 1/2/3 if undecided.
+
+Key Action:
+Select Create Project & Go to Portal.
+
+⸻
+
+6. Creator Home (Mission Control)
+
+URL: /creator/home
+
+This is your dashboard.
+
+You will see:
+
+6.1 Current Project Card
+
+Displays:
+	•	Project title
+	•	Progress bar
+	•	Status
+	•	Continue button
+
+6.2 Library Section
+
+All past & current projects are listed.
+
+Most common action:
+Click Continue Project.
+
+⸻
+
+7. Project Console
+
+URL: /creator/projects/[slug]
+
+This screen shows the health of your 3-song project.
+
+You will see:
+	•	Project name
+	•	Artist
+	•	Genre, intended use
+	•	Progress bar
+	•	Next best action (usually: “Upload audio for your first song”)
+
+7.1 Song Table
+
+For each track:
+	•	Title
+	•	Audio status
+	•	Lyrics status
+	•	Splits status
+	•	Overall status
+
+Key action:
+Select Open Song Workspace for the first incomplete track.
+
+⸻
+
+8. Song Workspace
+
+URL: /creator/projects/[slug]/songs/[song-id]
+
+This is where all song-level information is stored and maintained.
+
+The workspace contains five sections.
+
+⸻
+
+8.1 Section 1 — Audio
+
+If no audio exists:
+	•	You will see: Drop your final mix here or Browse…
+	•	You may instead paste a Google Drive URL to store files in your own Drive.
+
+If audio exists:
+	•	A waveform player loads
+	•	Options appear:
+	•	Replace file
+	•	Upload stems (optional)
+
+⸻
+
+8.2 Section 2 — Credits & Technical Details
+
+Displays fields such as:
+	•	Artist
+	•	Producer
+	•	DAW
+	•	Key & Tempo
+	•	Mix Engineer
+	•	Mastering Engineer
+
+You can revise via:
+Edit credits
+(typically opens a brief form or modal).
+
+⸻
+
+8.3 Section 3 — Lyrics
+
+Collapsed view shows:
+	•	First line of lyrics or “No lyrics yet”
+
+Expand to edit the full block.
+This supports:
+	•	Full lyrics
+	•	Partial lyrics
+	•	Works in progress
+
+⸻
+
+8.4 Section 4 — Ownership & Splits
+
+Shows:
+	•	Writers
+	•	Producers
+	•	Master owner(s)
+	•	Split summary based on your form submission
+
+You may open a more detailed summary:
+View full rights summary
+
+⸻
+
+8.5 Section 5 — Export & Review
+
+Shows:
+	•	How many of the 3 songs are complete
+	•	Requirements to export
+	•	Link to return to project page
+
+Once all 3 songs:
+	•	Audio uploaded
+	•	Lyrics present
+	•	Splits confirmed
+You may generate PDF/CSV packages.
+
+⸻
+
+9. File Management (Google Drive)
+
+The platform does not store your files.
+You own all data.
+
+You have two options:
+
+Option 1 — Paste Google Drive URL (Recommended)
+	•	Upload audio and stems to your own Google Drive
+	•	Copy the share link into the Audio section
+	•	The platform maps the URL only
+	•	Your files remain in your Drive
+
+Option 2 — Upload via form
+	•	You upload directly through a field
+	•	A script or automation copies it to your Drive
+	•	The platform stores only the Drive URL (not the file)
+
+⸻
+
+10. Exporting Your Project
+
+Once all required elements are complete:
+	•	Navigate to any Song Workspace
+	•	Scroll to Export & Review
+	•	If all criteria are met, an Export Project Summary button appears
+
+Exports include:
+	•	PDF summary
+	•	CSV metadata
+	•	Links to Google Drive audio
+
+These are suitable for:
+	•	Artists
+	•	Producers
+	•	Managers
+	•	A&R
+	•	Sync libraries
+	•	Studio teams
+
+⸻
+
+11. Returning to Your Project
+
+At any time you can:
+	•	Login at /login
+	•	View your library at /creator/home
+	•	Continue your latest project or manage old ones
+
+Your data is always available.
+
+⸻
+
+12. Support & Troubleshooting
+
+Common Questions
+	•	Forgot password → Use Outseta’s reset tool
+	•	Lost export → Regenerate from project screen
+	•	Change titles → Use “Edit” actions in Project Console or Song Workspace
+	•	Replace audio → Use the Audio section file upload or Drive URL paste
+
+For any issues not covered, contact support using the link in the Account menu.
+
+⸻
+
+13. Summary of User Workflow
+
+1. Landing → Start for $1
+2. Pricing → Pay
+3. Create account
+4. Onboarding (3 steps)
+5. Creator Home
+6. Project Console
+7. Song Workspace (audio → lyrics → splits → export)
+8. Generate summary
+
+Everything flows in a straight line with no dead ends.
+
+⸻
+
+If you want, I can now generate:
+	•	PDF-style version
+	•	Enterprise onboarding flowchart
+	•	Framer site architecture document (internal)
+	•	Investor-facing technical overview
+
+Just tell me which one.
