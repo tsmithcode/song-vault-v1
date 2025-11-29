@@ -1,0 +1,352 @@
+Great. Let’s turn those ASCII screens into a Framer build spec: CMS, components, and wiring so you can actually implement Waveform + Outseta + Tally with minimal friction.
+
+I’ll keep it tight and practical.
+
+⸻
+
+1. Framer CMS Architecture
+
+You need 3 core collections to power everything you’ve drawn:
+	1.	Creators
+	2.	Projects
+	3.	Songs
+
+You can add an Assets collection later if you want deeper audio breakdown.
+
+1.1 Creators Collection
+
+Represents each paying user / artist identity.
+
+Fields:
+	•	name (Text) – public display name (“Thrizz13”)
+	•	slug (Slug) – used if you ever want public creator pages
+	•	email (Text) – to map to Airtable/Outseta (internal)
+	•	country (Text or Option)
+	•	primaryRole (Option: Artist, Producer, Songwriter, All)
+	•	avatar (Image, optional)
+	•	bio (Rich text, optional)
+
+Relations:
+	•	projects (Reference, multiple) – link to Projects (reverse is primary)
+
+For v0 you can populate this manually from your Airtable/Outseta user list. Automation can come later.
+
+⸻
+
+1.2 Projects Collection
+
+Each 3-song bundle.
+
+Fields:
+	•	title (Text) – e.g. “Midnight EP”
+	•	slug (Slug) – used for /creator/projects/[slug]
+	•	creator (Reference → Creators)
+	•	genre (Option/Text)
+	•	intendedUse (Option: Demo, Label pitch, Distribution-ready, Collab)
+	•	status (Option: In setup, In review, Complete, Archived)
+	•	year (Number/Text)
+	•	labelImprint (Text)
+	•	goalSentence (Rich text / Text)
+	•	songCount (Number – store 3)
+	•	progressPercent (Number 0–100)
+	•	lastUpdated (Date/Time)
+	•	createdAt (Date/Time)
+	•	notes (Rich text, optional)
+
+Relations:
+	•	songs (Reference, multiple → Songs) – 3 per project
+
+⸻
+
+1.3 Songs Collection
+
+Individual tracks under a project.
+
+Fields:
+	•	title (Text) – “Twerk Alot”
+	•	slug (Slug) – used for /creator/projects/[project]/songs/[slug]
+	•	project (Reference → Projects)
+	•	trackNumber (Number 1–3)
+	•	type (Option: Explicit, Clean, Instrumental)
+	•	status (Option: Not started, Audio only, Lyrics added, Ready to export)
+	•	audioUrl (URL – final mix)
+	•	stemsUrl (URL – zipped stems or drive link)
+	•	duration (Text number or MM:SS string)
+	•	tempoBpm (Number)
+	•	key (Text: “C Minor”)
+	•	daw (Text)
+	•	artistName (Text – display only)
+	•	producerName (Text)
+	•	mixEngineer (Text)
+	•	masterEngineer (Text)
+	•	lyrics (Rich text)
+	•	lyricsPreview (Text, auto-filled excerpt if you want)
+	•	splitsSummary (Rich text – pasted from Tally/Airtable for now)
+	•	rightsStatus (Option: Draft, Confirmed)
+	•	reviewNotes (Rich text, for your internal notes)
+	•	createdAt (Date/Time)
+	•	updatedAt (Date/Time)
+
+⸻
+
+2. Component System in Framer
+
+Use the Waveform template’s layout as your base and layer these reusable components.
+
+2.1 Layout Components
+	1.	AppShell
+	•	Top nav: logo, nav links, auth buttons.
+	•	For logged-in pages, you can show: Library, Account, Logout.
+	•	Variants:
+	•	Public (Landing, Pricing)
+	•	Authenticated (Creator Home, Project, Song)
+	2.	PageHeader
+	•	Props:
+	•	title, subtitle, badge, actions
+	•	Used on:
+	•	Landing hero
+	•	Pricing
+	•	Creator Home
+	•	Project Console
+	•	Song Workspace
+	3.	SectionCard
+	•	Generic card with title, optional icon, body slot.
+	•	Used for:
+	•	“Current Project”
+	•	“Your library”
+	•	“Audio”
+	•	“Credits & Tech”
+	•	“Lyrics”
+	•	“Ownership & Splits”
+	•	“Export & Review”
+
+⸻
+
+2.2 Data Components
+	1.	ProjectCard (used on Creator Home & Library)
+	•	Props:
+	•	title
+	•	artist
+	•	status
+	•	songCount
+	•	updatedAt
+	•	progressPercent
+	•	href (link to project page)
+	•	State variants:
+	•	Hover: subtle scale, shadow, slight gradient shift
+	•	Status color variants: In setup (yellow), In review (blue), Complete (green)
+	2.	SongRow (used in Project Console list)
+	•	Props:
+	•	trackNumber
+	•	title
+	•	audioStatus (bool)
+	•	lyricsStatus (bool)
+	•	splitsStatus (bool)
+	•	statusText
+	•	href (Song Workspace)
+	•	Visual:
+	•	Small icons: ✓ / ✖ for Audio/Lyrics/Splits
+	•	Right-side button: “Open Song Workspace”
+	3.	ProgressBar
+	•	Props:
+	•	value (0–100)
+	•	Used in:
+	•	Creator Home current project
+	•	Project Console top section
+	4.	StatusPill
+	•	Props:
+	•	status (“In setup”, “In review”, “Complete”, “Audio only”)
+	•	Visual:
+	•	Pill with label + optional pulsing dot for “In review”.
+	5.	AudioCard
+	•	Props:
+	•	label (“Recording”, “Instrumental”, etc.)
+	•	audioUrl
+	•	stemsUrl
+	•	States:
+	•	Empty (no file) → shows “Drop file / Browse”
+	•	Filled → audio player with waveform and “Replace file” button
+	6.	EditableTextRow (for later; for now can just be static)
+	•	Label + value + optional Edit action that opens modal or Tally link.
+
+⸻
+
+3. Page Wiring (Framer + CMS + External Systems)
+
+3.1 Landing /
+	•	Wrap with AppShell (public variant).
+	•	Static content; no CMS needed here.
+	•	Buttons:
+	•	Start for $1 → /pricing
+	•	Login → /login
+
+⸻
+
+3.2 Pricing /pricing
+	•	AppShell (public).
+	•	PageHeader with title “3-Song Project Beta”.
+	•	A PlanCard (just a styled SectionCard or dedicated component).
+	•	Button:
+	•	Continue – Pay $1:
+	•	Open Outseta checkout (their embed or hosted link).
+	•	On success, Outseta redirect → /onboard/project-setup?step=1.
+
+⸻
+
+3.3 Login /login
+	•	AppShell (public).
+	•	Centered SectionCard with:
+	•	PageHeader “Log in to your creator portal”
+	•	Outseta login widget embed (HTML embed box in Framer).
+
+⸻
+
+3.4 Onboarding Wizard (3 steps)
+
+These can be 3 separate Framer pages, or 1 page with section variants; simplest is 3 pages:
+
+/onboard/project-setup?step=1
+	•	AppShell (auth variant).
+	•	Use a simple Framer form or embed a tiny Tally form:
+	•	On submit:
+	•	Send data to Tally/Airtable, and optionally call an internal API later.
+	•	Navigate to step 2.
+
+/onboard/project-setup?step=2
+	•	Same pattern; on submit → step 3.
+
+/onboard/project-setup?step=3
+	•	Song shell names + explicit/clean type.
+	•	On submit:
+	•	Tally saves all three songs + project into Airtable.
+	•	You (for v0) manually create a Project entry in Framer CMS with:
+	•	creator reference
+	•	songs created under Songs collection (with track numbers and titles).
+	•	Navigate to /creator/home.
+
+Later, automation (Whalesync/Make) can mirror Airtable → Framer CMS.
+
+⸻
+
+3.5 Creator Home /creator/home
+	•	AppShell (auth).
+	•	PageHeader: “Welcome back, [Creator.name]”
+	•	Use Creators CMS if you want dynamic name; for v0 you can hardcode your own.
+
+Main layout:
+	1.	Current Project Card
+	•	Connect ProjectCard to a single Projects item:
+	•	Either filter by creator and status != Archived and pick the most recent.
+	•	Or manually set one as “primary” for now.
+	2.	Library Table/List
+	•	Data source: Projects collection filtered by creator.
+	•	You can use a simple stacked list of ProjectCards or a table component.
+
+⸻
+
+3.6 Project Console /creator/projects/[slug]
+
+This is a dynamic CMS page for Projects.
+	•	In Framer:
+	•	Create a CMS Collection Page bound to Projects.
+	•	Use field bindings:
+	•	title → H1
+	•	genre, intendedUse, status, progressPercent, etc.
+
+Sections:
+	1.	Header:
+	•	PageHeader with:
+	•	Title: Project.title
+	•	Subtitle: [Creator.name] · {songCount} songs • {genre} • {intendedUse}
+	•	StatusPill bound to status
+	•	ProgressBar bound to progressPercent
+	2.	“Next best action”:
+	•	For v0, static text like “Upload audio for your first song”.
+	•	Later: if any Song has status = Not started, show link to [first such song].
+	3.	Songs list:
+	•	Add a “List” block for Songs in Framer with the filter:
+	•	project = Current Project
+	•	Use SongRow component as the template.
+	•	Bind:
+	•	trackNumber, title
+	•	Audio/Lyrics/Splits status from Song fields
+	•	href: link to /creator/projects/[project.slug]/songs/[song.slug] (CMS nested routing or manual link if needed).
+
+⸻
+
+3.7 Song Workspace /creator/projects/[slug]/songs/[song-slug]
+
+You’ll make this a CMS Collection Page for Songs.
+	•	In Framer:
+	•	Create collection page for Songs.
+	•	Use nested info:
+	•	Access the parent project via the project reference.
+
+Header binding:
+	•	H1: Song.title
+	•	Subtitle: [Song.project.creator.name] · Part of {Song.project.title}
+	•	Status pill: bound to Song.status
+	•	“Back to project” link: /creator/projects/[Song.project.slug]
+
+Sections:
+	1.	Section 1 – Audio (AudioCard)
+	•	If audioUrl is empty → show “Drop file / Browse” UI (low-code: just link to a small upload Tally form, or dummy placeholder for now).
+	•	If audioUrl has value → standard HTML audio player sourced from audioUrl.
+	2.	Section 2 – Credits & Tech (SectionCard)
+	•	Bind text rows to:
+	•	artistName, producerName, daw, tempoBpm, key, mixEngineer, masterEngineer.
+	•	For v0, a small “Edit credits” button can link out to an admin-only Tally form (you fill it yourself).
+	3.	Section 3 – Lyrics
+	•	Collapsible SectionCard:
+	•	Title: “Lyrics”
+	•	Closed state: show lyricsPreview or first line of lyrics.
+	•	Open state: show full lyrics rich text.
+	4.	Section 4 – Ownership & Splits
+	•	Read-only block bound to splitsSummary + rightsStatus.
+	•	Link “View full rights summary” can go to a static page or PDF (for now, maybe N/A).
+	5.	Section 5 – Export & Review
+	•	Static instructions at v0:
+	•	Show “Project readiness: X of 3 songs complete” (if you manually keep status/progressPercent in sync).
+	•	Back to project button linking to /creator/projects/[Song.project.slug].
+
+⸻
+
+4. Animations (Specific, but Simple)
+
+You can implement these with Framer’s built-in Variant & Scroll features:
+	•	ProjectCard
+	•	Default: slight elevation, neutral background.
+	•	Hover: scale: 1.02, y: -3, soft shadow.
+	•	Entrance: opacity: 0 → 1, y: 10 → 0 on scroll in.
+	•	SongRow
+	•	Hover background: var(--surfaceHover) with arrow icon sliding 4px to the right.
+	•	Page transitions
+	•	Page-level:
+	•	Landing → Pricing: fade.
+	•	Creator Home → Project: slide from right.
+	•	Project → Song: slide from right with slight scale.
+	•	SectionCard
+	•	When appearing (especially in Song Workspace):
+	•	Use staggered fade-in (100–150ms offset) for Audio → Credits → Lyrics → Splits → Export.
+	•	Lyrics collapse
+	•	Height animation and opacity; arrow flips 180°.
+
+All of this can be done with Framer’s visual controls—no custom code required.
+
+⸻
+
+5. Data Flow vs Implementation Reality
+
+For v0, your actual operational flow is:
+	1.	User signs up and pays $1 via Outseta/Stripe.
+	2.	Onboarding wizard (Framer + Tally) writes to Airtable.
+	3.	You (or an assistant) periodically sync:
+	•	Create/update Creators, Projects, Songs in Framer CMS based on Airtable rows.
+	4.	The Framer UI (Creator Home, Project Console, Song Workspace) is read-only or lightly editable.
+
+Later, when you’re ready to eliminate manual sync, add one non-redundant system:
+	•	A syncing layer (Whalesync, Make, or a tiny custom script) to push Airtable → Framer CMS.
+
+Until then, everything above works with the accounts you already planned: Framer, Outseta, Stripe, Tally, Airtable.
+
+If you’d like, next step I can give you a build checklist, day-by-day or step-by-step inside Framer (exact order: create CMS, build components, then pages, then hook Outseta/Tally).
