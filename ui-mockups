@@ -1,0 +1,313 @@
+Here’s the updated, end-to-end set of ASCII screens based on the new workflow (ignoring the failed implementation).
+
+⸻
+
+1. Public Landing – /
+
+┌───────────────────────────────────────────────────────────────┐
+│ LOGO                            [ Login ]   [ Start for $1 ] │
+├───────────────────────────────────────────────────────────────┤
+│                                                               │
+│   H1: Lock in your 3-song project for $1                      │
+│   Sub: Upload audio, lyrics, and ownership info in one place. │
+│                                                               │
+│   [ Start for $1 ]                                            │
+│   (primary CTA → /pricing)                                    │
+│                                                               │
+│   ┌───────────────────────────────────────────────────────┐   │
+│   │   3 SIMPLE STEPS                                      │   │
+│   │   1. Pay $1 and create your account                   │   │
+│   │   2. Submit your 3 songs (audio + lyrics + splits)    │   │
+│   │   3. Get a project summary you can send to anyone     │   │
+│   └───────────────────────────────────────────────────────┘   │
+│                                                               │
+│   [ Logos / social proof strip ]                              │
+│                                                               │
+│   [ How it works ▾ ]  [ FAQ ▾ ]                              │
+│                                                               │
+└───────────────────────────────────────────────────────────────┘
+
+
+⸻
+
+2. Pricing / $1 Offer – /pricing
+
+┌───────────────────────────────────────────────────────────────┐
+│ LOGO                            [ Login ]   [ Start for $1 ] │
+├───────────────────────────────────────────────────────────────┤
+│                                                               │
+│                H1: 3-Song Project Beta                        │
+│                                                               │
+│   ┌───────────────────────────────────────────────────────┐   │
+│   │  PLAN CARD                                           │   │
+│   │  Title: 3-Song Setup (Beta)                          │   │
+│   │  Price: $1                                           │   │
+│   │  • Store audio, lyrics, and splits for 3 songs       │   │
+│   │  • Rights snapshot (PDF & CSV)                       │   │
+│   │  • Private creator portal + library view             │   │
+│   │                                                      │   │
+│   │      [ Continue – Pay $1 ]                           │   │
+│   └───────────────────────────────────────────────────────┘   │
+│                                                               │
+│   H2: What happens after I pay?                               │
+│   • You set up your creator profile                           │
+│   • You name your 3 tracks                                    │
+│   • You upload audio, lyrics, and splits                      │
+│                                                               │
+│   [ Top 3 FAQs … ]                                            │
+│                                                               │
+└───────────────────────────────────────────────────────────────┘
+
+
+⸻
+
+3. Login – /login (Framer + Outseta)
+
+┌───────────────────────────────────────────────────────────────┐
+│ LOGO                                                         │
+├───────────────────────────────────────────────────────────────┤
+│                                                               │
+│   H1: Log in to your creator portal                           │
+│                                                               │
+│   ┌───────────────────────────────────────────────────────┐   │
+│   │  [ Outseta Login Widget ]                            │   │
+│   │   Email: [________________ ]                         │   │
+│   │   Password: [_____________ ]                         │   │
+│   │   [ Log in ]                                         │   │
+│   │   [ Forgot password? ]                               │   │
+│   └───────────────────────────────────────────────────────┘   │
+│                                                               │
+│   [ Don’t have an account? Start for $1 → ]                   │
+│                                                               │
+└───────────────────────────────────────────────────────────────┘
+
+
+⸻
+
+4. Signup & Payment – Outseta/Stripe (conceptual)
+
+┌───────────────────────────────────────────────────────────────┐
+│  Step 1 of 3   Create your account                           │
+├───────────────────────────────────────────────────────────────┤
+│   Email:    [________________________]                       │
+│   Password: [________________________]                       │
+│   [ Next – Billing ]                                         │
+└───────────────────────────────────────────────────────────────┘
+
+┌───────────────────────────────────────────────────────────────┐
+│  Step 2 of 3   Pay $1 (3-Song Project Beta)                  │
+├───────────────────────────────────────────────────────────────┤
+│   Card number:  [________________________]                   │
+│   Exp / CVC:    [____]  [___]                                │
+│   Name on card: [________________________]                   │
+│                                                           $1 │
+│   [ Pay $1 and continue ]                                    │
+└───────────────────────────────────────────────────────────────┘
+
+┌───────────────────────────────────────────────────────────────┐
+│  Step 3 of 3   You’re in ✅                                  │
+├───────────────────────────────────────────────────────────────┤
+│   Your account is ready.                                     │
+│   Next: Set up your creator profile and first project.       │
+│                                                               │
+│   [ Continue to setup → /onboard/project-setup ]             │
+└───────────────────────────────────────────────────────────────┘
+
+
+⸻
+
+5. Onboarding Wizard – Step 1 (Creator Identity)
+
+/onboard/project-setup?step=1
+
+┌───────────────────────────────────────────────────────────────┐
+│ LOGO                                Step 1 of 3              │
+├───────────────────────────────────────────────────────────────┤
+│   H1: Let’s set up your creator profile                      │
+│   Sub: This shows up on your projects and exports.           │
+│                                                               │
+│   Artist / Stage Name: [__________________________]          │
+│   Country / Region:   [______________▾]                      │
+│   Primary Role:       ( ) Artist  ( ) Producer               │
+│                        ( ) Songwriter ( ) All of the above   │
+│                                                               │
+│   [ Back ]                               [ Next – Project » ]│
+└───────────────────────────────────────────────────────────────┘
+
+
+⸻
+
+6. Onboarding Wizard – Step 2 (Project Basics)
+
+/onboard/project-setup?step=2
+
+┌───────────────────────────────────────────────────────────────┐
+│ LOGO                                Step 2 of 3              │
+├───────────────────────────────────────────────────────────────┤
+│   H1: What is this 3-song project called?                    │
+│                                                               │
+│   Project Title:  [ Midnight EP              ]               │
+│   Main Genre:     [ Hip-Hop ▾               ]                │
+│   Intended Use:   [ Label pitch ▾           ]                │
+│                                                               │
+│   Hint: You can change this later; this just labels the set. │
+│                                                               │
+│   [ « Back ]                           [ Next – Tracks » ]   │
+└───────────────────────────────────────────────────────────────┘
+
+
+⸻
+
+7. Onboarding Wizard – Step 3 (Song Shells)
+
+/onboard/project-setup?step=3
+
+┌───────────────────────────────────────────────────────────────┐
+│ LOGO                                Step 3 of 3              │
+├───────────────────────────────────────────────────────────────┤
+│   H1: Name your three tracks                                  │
+│   Sub: You can rename them later; this creates your slots.   │
+│                                                               │
+│   [ Song 1 ]                                                 │
+│   Title:   [____________________]                            │
+│   Type:    ( ) Explicit  ( ) Clean  ( ) Instrumental         │
+│   ────────────────────────────────────────────────────────    │
+│   [ Song 2 ]                                                 │
+│   Title:   [____________________]                            │
+│   Type:    ( ) Explicit  ( ) Clean  ( ) Instrumental         │
+│   ────────────────────────────────────────────────────────    │
+│   [ Song 3 ]                                                 │
+│   Title:   [____________________]                            │
+│   Type:    ( ) Explicit  ( ) Clean  ( ) Instrumental         │
+│                                                               │
+│   [ Skip, use Track 1/2/3 ]  [ Create Project & Go to Portal ]│
+└───────────────────────────────────────────────────────────────┘
+
+
+⸻
+
+8. Creator Home (Mission Control) – /creator/home
+
+┌───────────────────────────────────────────────────────────────┐
+│ LOGO           [ Library ] [ Account ] [ Logout ]            │
+├───────────────────────────────────────────────────────────────┤
+│   H1: Welcome back, Thrizz13                                 │
+│   Sub: Here’s your 3-song project and library.               │
+│                                                               │
+│   ┌───────────────────────────────────────────────────────┐   │
+│   │ CURRENT PROJECT                                       │   │
+│   │ Midnight EP                                           │   │
+│   │ Progress: [██████░░░░]  30%                           │   │
+│   │ Status: In setup                                      │   │
+│   │                                                       │   │
+│   │ [ Continue project ]                                  │   │
+│   └───────────────────────────────────────────────────────┘   │
+│                                                               │
+│   H2: Your library                                            │
+│   ┌───────────────────────────────────────────────────────┐   │
+│   │ Project              Songs   Status    Updated        │   │
+│   │ Midnight EP          3       In setup  2h ago         │   │
+│   │ Summer Tape Vol.1    3       Complete  3d ago         │   │
+│   └───────────────────────────────────────────────────────┘   │
+│                                                               │
+└───────────────────────────────────────────────────────────────┘
+
+
+⸻
+
+9. Project Console – /creator/projects/[slug]
+
+┌───────────────────────────────────────────────────────────────┐
+│ LOGO    [ ← Home ]     Midnight EP        [ Account ]        │
+├───────────────────────────────────────────────────────────────┤
+│   H1: Midnight EP                                           │
+│   Sub: Thrizz13 · 3 songs • Hip-Hop • Label pitch           │
+│   Status: In setup                                          │
+│   Progress: [██████░░░░]  30%                               │
+│                                                               │
+│   H2: Next best action                                       │
+│   [ Upload audio for your first song ]                       │
+│                                                               │
+│   H2: Songs in this project                                  │
+│   ┌───────────────────────────────────────────────────────┐   │
+│   │  #  Title         Audio   Lyrics  Splits  Status      │   │
+│   │  1  Twerk Alot   ✖       ✖       ✖       Start here   │   │
+│   │      [ Open Song Workspace ]                          │   │
+│   │-------------------------------------------------------│   │
+│   │  2  Neon Lights  ✖       ✖       ✖       Not started  │   │
+│   │      [ Open Song Workspace ]                          │   │
+│   │-------------------------------------------------------│   │
+│   │  3  Midnight Dr. ✖       ✖       ✖       Not started  │   │
+│   │      [ Open Song Workspace ]                          │   │
+│   └───────────────────────────────────────────────────────┘   │
+│                                                               │
+│   [ View data roadmap ]                                      │
+│                                                               │
+└───────────────────────────────────────────────────────────────┘
+
+
+⸻
+
+10. Song Workspace – /creator/projects/[slug]/songs/[song-id]
+
+┌───────────────────────────────────────────────────────────────┐
+│ LOGO   [ ← Midnight EP ]   Twerk Alot       [ Account ]      │
+├───────────────────────────────────────────────────────────────┤
+│   Breadcrumb: Home / Midnight EP / Twerk Alot                │
+│                                                               │
+│   H1: Twerk Alot                                             │
+│   Sub: Thrizz13 · Part of Midnight EP                        │
+│   Status: Audio only (so far)                                │
+│                                                               │
+│   ┌───────────────────────────────────────────────────────┐   │
+│   │ SECTION 1 – Audio                                    │   │
+│   │                                                      │   │
+│   │   If no audio yet:                                   │   │
+│   │   [ Drop your final mix here or Browse… ]            │   │
+│   │                                                      │   │
+│   │   If audio exists:                                   │   │
+│   │   [ ▷─────────────── waveform ─────────────── ]      │   │
+│   │   [ Replace file ]   [ Upload stems (optional) ]     │   │
+│   └───────────────────────────────────────────────────────┘   │
+│                                                               │
+│   ┌───────────────────────────────────────────────────────┐   │
+│   │ SECTION 2 – Credits & Tech                           │   │
+│   │  Artist:      Thrizz13                               │   │
+│   │  Producer:    JWOODCEO                               │   │
+│   │  DAW:         Pro Tools                              │   │
+│   │  Tempo:       171 BPM                                │   │
+│   │  Key:         C Minor                                │   │
+│   │  Mix:         GVO Smith                              │   │
+│   │  Master:      GVO Smith                              │   │
+│   │  [ Edit credits ]                                    │   │
+│   └───────────────────────────────────────────────────────┘   │
+│                                                               │
+│   ┌───────────────────────────────────────────────────────┐   │
+│   │ SECTION 3 – Lyrics                                    │   │
+│   │  [ Expand ▾ ]                                         │   │
+│   │  (collapsed: shows first 2 lines or “No lyrics yet”)  │   │
+│   │  [ Edit lyrics ]                                      │   │
+│   └───────────────────────────────────────────────────────┘   │
+│                                                               │
+│   ┌───────────────────────────────────────────────────────┐   │
+│   │ SECTION 4 – Ownership & Splits                        │   │
+│   │  Songwriters: …                                       │   │
+│   │  Producers: …                                         │   │
+│   │  Master owner(s): …                                   │   │
+│   │  Splits: (summary text from intake)                   │   │
+│   │  [ View full rights summary ]                         │   │
+│   └───────────────────────────────────────────────────────┘   │
+│                                                               │
+│   ┌───────────────────────────────────────────────────────┐   │
+│   │ SECTION 5 – Export & Review                           │   │
+│   │  Project readiness: 1 of 3 songs complete             │   │
+│   │  To export: finish audio for all 3 songs.             │   │
+│   │  [ Back to project ]                                  │   │
+│   └───────────────────────────────────────────────────────┘   │
+│                                                               │
+└───────────────────────────────────────────────────────────────┘
+
+
+⸻
+
+If you want the next layer, I can now map each of these ASCII screens to specific Framer components and CMS structures (exact collections and fields) so your implementation is almost drag-and-drop.
