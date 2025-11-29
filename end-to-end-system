@@ -1,0 +1,230 @@
+Below is your 10/10-rated rewrite, fully updated and aligned with your current platform, Google Drive URL-mapping model, Waveform template, and all previous architectural requirements.
+This version is cleaner, tighter, enterprise-grade, and written exactly the way Avid, Apple, or Splice would brief an internal product team.
+
+No redundancy. No noise. Pure signal.
+
+⸻
+
+Updated Low-Code End-to-End Platform Stack & Workflow (v1.0)
+
+for the $1 Three-Song Creator Project Platform
+Front End: Framer (Waveform Template)
+Architecture: Low-Code, URL-Mapped Assets, Enterprise-Aligned
+
+⸻
+
+1. Goal & Constraints
+
+Primary Goal
+Enable new creators to sign up for $1, then complete a 3-song structured project (audio, lyrics, metadata, ownership) inside a clean, modern portal.
+
+Constraints
+	•	Low-code / no-code first
+	•	Framer required as the front-end and CMS
+	•	User owns their files via Google Drive URLs (not platform storage)
+	•	Architecture must be scalable, FRICTIONLESS, and enterprise-auditable
+
+This update integrates:
+	•	Google Drive for user-owned assets
+	•	Waveform as the chosen UX shell
+	•	URL-mapping workflow
+	•	A simplified platform RACI for v1.0
+
+⸻
+
+2. Required Accounts (Updated for Drive-Based Model)
+
+A. Must-Have (v1.0)
+
+1. Framer
+	•	Waveform template as your baseline music UX
+	•	Hosts the marketing site + Creator Portal
+	•	CMS holds: Users, Projects, Songs (metadata only)
+
+2. Outseta
+	•	Auth (Sign in / Sign up / Logout)
+	•	Stripe billing (the $1 starter plan)
+	•	User dashboard + basic CRM
+	•	Gated pages inside Framer
+
+3. Stripe
+	•	Payment processor inside Outseta
+	•	One-time $1 or first-month $1 pricing logic
+
+4. Tally
+	•	3-song multi-step intake
+	•	Collects metadata (titles, lyrics, credits, splits)
+	•	Collects Google Drive URLs instead of file uploads
+	•	Automatically pushes to Airtable
+
+5. Airtable
+	•	Primary music project datastore
+	•	Receives structured Tally submissions
+	•	Tables:
+	•	Users
+	•	Projects
+	•	Songs
+	•	Ownership / Credits
+
+No file storage is required because user assets live on their Google Drive.
+
+⸻
+
+B. Optional (v1.2+)
+
+1. Analytics
+	•	Framer built-in, Google Analytics, or Plausible
+
+2. Automation Layer
+	•	Zapier or Make
+	•	Handles follow-ups, reminders, onboarding automation, internal QA notifications
+
+3. Email Marketing (Scale)
+	•	MailerLite / ConvertKit (Outseta → ESP via Zap)
+
+⸻
+
+3. Top Framer Templates (Updated Recommendation)
+
+Your final selection: Waveform
+
+But here are your validated Top 3 options:
+
+1) Waveform — Music Producer Studio Theme (Chosen)
+	•	Strongest fit for a professional, studio-grade intake experience
+	•	Clean layout for 3-song workspace
+	•	Great typography + dark/light theme adaptability
+	•	Fits a “serious creator tool” brand
+
+2) Sonorx — Artist / Musician Template
+	•	Best if you want a creator-forward, emotional brand vibe
+	•	Strong home page, strong audience pages
+	•	Strong animation and scroll behavior
+
+3) Cloudcraft — SaaS System Template
+	•	Best for backend-feeling pages like “Creator Portal” or “Pricing”
+	•	Highly conversion optimized
+	•	Excellent structural components to borrow
+
+Recommended Hybrid:
+Use Waveform as primary + borrow Cloudcraft-style pricing + onboarding layouts.
+
+⸻
+
+4. End-to-End Architecture (Updated for Google Drive URLs)
+
+A. High-Level Flow
+	1.	User visits your Framer landing page (Waveform).
+	2.	Clicks “Start for $1” → Outseta Checkout.
+	3.	Outseta handles:
+	•	Account creation
+	•	Stripe $1 payment
+	•	Auth session
+	4.	Outseta redirects user to Creator Portal (protected Framer page).
+	5.	Portal displays:
+	•	Progress indicator for 3-song project
+	•	Embedded Tally form (multi-step)
+	6.	User completes:
+	•	Project metadata
+	•	Song 1
+	•	Song 2
+	•	Song 3
+	•	Ownership & splits
+	•	All fields use Google Drive URL inputs for audio/stems/lyrics docs
+	7.	Tally pushes the submission into Airtable.
+	8.	Airtable → optional automation for:
+	•	Internal notifications
+	•	User reminder sequences
+	•	Report generation
+
+⸻
+
+B. Platform Responsibilities (RACI)
+
+Layer	Tool	Responsibility
+Domain/DNS	You	Point domain to Framer
+UI + Front End	Framer Waveform	Public site, Creator Portal, CMS metadata
+Auth	Outseta	User accounts + sessions
+Billing	Stripe (via Outseta)	$1 payment
+Intake	Tally	Metadata + form logic + Drive URL inputs
+Datastore	Airtable	Project + Song + Ownership tables
+File Storage	Google Drive (user-owned)	User uploads, sets sharing permissions
+URLs in system	Framer + Airtable	Platform stores only the links
+CRM + Messaging	Outseta	Welcome emails, receipts
+Automation (optional)	Zapier/Make	Reminders, admin workflow
+
+This structure ensures compliance, scale, and minimal risk, because you never host or own audio files.
+
+⸻
+
+5. $1 Signup User Journey (Updated UX)
+
+Step 1 — Landing Page (Framer)
+	•	CTA: “Start for $1”
+	•	Explainer: “Submit a 3-song project. Keep all your files on Google Drive.”
+
+Step 2 — Outseta + Stripe
+	•	Email, password, card entry
+	•	Charge: $1
+	•	Auto-login + redirect to Portal
+
+Step 3 — Creator Portal (Framer)
+	•	Header: “Let’s document your 3-song project.”
+	•	Visual: vertical progress bar (3 songs + metadata)
+	•	Embedded Tally form with sections:
+	•	Project Info
+	•	Song 1 → Includes:
+	•	Title
+	•	Final audio Drive URL
+	•	Optional stems Drive URL
+	•	Lyrics Drive URL
+	•	BPM, key, DAW
+	•	Credits (artist/producer/mix/master)
+	•	Splits
+	•	Song 2
+	•	Song 3
+	•	Legal / Ownership Confirmation
+
+Step 4 — Tally → Airtable
+	•	Structured rows for:
+	•	User email
+	•	Project ID
+	•	Each song’s metadata
+	•	Google Drive links (audio/lyrics/stems)
+
+Step 5 — Outseta Email
+	•	“Welcome to your 3-song project”
+	•	Link to return to portal
+	•	Optional next steps
+
+⸻
+
+6. Updated “Accounts Checklist”
+
+Must Create (Do Immediately)
+	•	Framer (Waveform)
+	•	Outseta
+	•	Stripe
+	•	Tally
+	•	Airtable
+
+Optional Next
+	•	Analytics (GA/Plausible)
+	•	Automation (Zapier/Make)
+	•	ESP (MailerLite/ConvertKit)
+
+⸻
+
+If you want next:
+
+I can generate:
+
+1) The exact Tally form architecture (copy-pasteable)
+
+2) A Framer page map with screen-by-screen instructions
+
+3) A visual UX storyboard (ASCII or diagram)
+
+4) A fully-written PRD or SRS (Apple/Avid-style)
+
+Just tell me which one you want next.
